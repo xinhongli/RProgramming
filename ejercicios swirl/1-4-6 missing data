@@ -1,0 +1,336 @@
+> library(swirl)
+library(swirl)
+
+| Hi! Type swirl() when you are ready to begin.
+
+> swirl()
+swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same
+| name as you did then. If you are new, call yourself something unique.
+
+What shall I call you? pacha
+pacha
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 1
+1
+
+| Please choose a lesson, or type 0 to return to course menu.
+
+1: Basic Building Blocks
+2: Sequences of Numbers
+3: Vectors
+4: Missing Values
+5: Subsetting Vectors
+6: Matrices and Data Frames
+
+Selection: 4
+4
+
+
+  |                                                                            
+  |                                                                      |   0%
+
+| Missing values play an important role in statistics and data analysis. Often,
+| missing values must not be ignored, but rather they should be carefully
+| studied to see if there's an underlying pattern or cause for their
+| missingness.
+
+...
+
+
+
+  |                                                                            
+  |====                                                                  |   5%
+| In R, NA is used to represent any value that is 'not available' or 'missing'
+| (in the statistical sense). In this lesson, we'll explore missing values
+| further.
+
+...
+
+
+
+  |                                                                            
+  |=======                                                               |  11%
+| Any operation involving NA generally yields NA as the result. To illustrate,
+| let's create a vector c(44, NA, 5, NA) and assign it to a variable x.
+
+> x <- c(44,NA,5,NA)
+x <- c(44,NA,5,NA)
+
+| You're the best!
+
+
+  |                                                                            
+  |===========                                                           |  16%
+| Now, let's multiply x by 3.
+
+> x*3
+x*3
+[1] 132  NA  15  NA
+
+| You got it!
+
+
+  |                                                                            
+  |===============                                                       |  21%
+| Notice that the elements of the resulting vector that correspond with the NA
+| values in x are also NA.
+
+...
+
+
+
+  |                                                                            
+  |==================                                                    |  26%
+| To make things a little more interesting, lets create a vector containing
+| 1000 draws from a standard normal distribution with y <- rnorm(1000).
+
+> y <- rnorm(1000)
+y <- rnorm(1000)
+
+| You are amazing!
+
+
+  |                                                                            
+  |======================                                                |  32%
+| Next, let's create a vector containing 1000 NAs with z <- rep(NA, 1000).
+
+> z <- rep(NA,1000)
+z <- rep(NA,1000)
+
+| You got it!
+
+
+  |                                                                            
+  |==========================                                            |  37%
+| Finally, let's select 100 elements at random from these 2000 values
+| (combining y and z) such that we don't know how many NAs we'll wind up with
+| or what positions they'll occupy in our final vector -- myData <- sample(c(y,
+| z), 100).
+
+> myData <- sample(c(y,z),100)
+myData <- sample(c(y,z),100)
+
+| You are doing so well!
+
+
+  |                                                                            
+  |=============================                                         |  42%
+| Let's first ask the question of where our NAs are located in our data. The
+| is.na() function tells us whether each element of a vector is NA. Call
+| is.na() on myData and assign the result to myNA.
+
+> myNA <- is.na(myData)
+myNA <- is.na(myData)
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |=================================                                     |  47%
+| Now, print myNA to see what you came up with.
+
+> myNA
+myNA
+  [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
+ [13]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
+ [25]  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE
+ [37] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE
+ [49]  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE
+ [61]  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE
+ [73] FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+ [85]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+ [97] FALSE  TRUE  TRUE  TRUE
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |=====================================                                 |  53%
+| Everywhere you see a TRUE, you know the corresponding element of myData is
+| NA. Likewise, everywhere you see a FALSE, you know the corresponding element
+| of myData is one of our random draws from the standard normal distribution.
+
+...
+
+
+
+  |                                                                            
+  |=========================================                             |  58%
+| In our previous discussion of logical operators, we introduced the `==`
+| operator as a method of testing for equality between two objects. So, you
+| might think the expression myData == NA yields the same results as is.na().
+| Give it a try.
+
+> myData == NA
+myData == NA
+  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+ [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+ [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+ [76] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+
+| You're the best!
+
+
+  |                                                                            
+  |============================================                          |  63%
+| The reason you got a vector of all NAs is that NA is not really a value, but
+| just a placeholder for a quantity that is not available. Therefore the
+| logical expression is incomplete and R has no choice but to return a vector
+| of the same length as myData that contains all NAs.
+
+...
+
+
+
+  |                                                                            
+  |================================================                      |  68%
+| Don't worry if that's a little confusing. The key takeaway is to be cautious
+| when using logical expressions anytime NAs might creep in, since a single NA
+| value can derail the entire thing.
+
+...
+
+
+
+  |                                                                            
+  |====================================================                  |  74%
+| So, back to the task at hand. Now that we have a vector, myNA, that has a
+| TRUE for every NA and FALSE for every numeric value, we can compute the total
+| number of NAs in our data.
+
+...
+
+
+
+  |                                                                            
+  |=======================================================               |  79%
+| The trick is to recognize that underneath the surface, R represents TRUE as
+| the number 1 and FALSE as the number 0. Therefore, if we take the sum of a
+| bunch of TRUEs and FALSEs, we get the total number of TRUEs.
+
+...
+
+
+
+  |                                                                            
+  |===========================================================           |  84%
+| Let's give that a try here. Call the sum() function on myNA to count the
+| total number of TRUEs in myNA, and thus the total number of NAs in myData.
+| Don't assign the result to a new variable.
+
+> sum(myNA)
+sum(myNA)
+[1] 45
+
+| Excellent job!
+
+
+  |                                                                            
+  |===============================================================       |  89%
+| Pretty cool, huh? Finally, let's take a look at the data to convince
+| ourselves that everything 'adds up'. Print myData to the console.
+
+> myData
+myData
+  [1]           NA           NA  0.132498394           NA           NA
+  [6]           NA           NA -0.032894096  0.303294857           NA
+ [11] -0.177261363 -0.231410603           NA           NA           NA
+ [16]  0.351813394 -1.100847459  0.351194881 -0.770964288           NA
+ [21]           NA -0.302838287  1.042583723  0.658608785           NA
+ [26]           NA           NA -1.343483130 -0.945975690           NA
+ [31] -0.818389295  0.178100475           NA -0.827857626  0.857796425
+ [36]           NA -0.150709017  0.052210190 -0.268455080  0.076969706
+ [41]  1.092986073 -0.253201230           NA -0.503285454           NA
+ [46] -1.572325842 -0.623650888           NA           NA           NA
+ [51]           NA -1.144048217           NA -0.176177281  1.505285604
+ [56]           NA           NA  1.071012298  0.008238141           NA
+ [61]           NA           NA  1.872434075           NA -0.647049720
+ [66]  0.786612757           NA -1.524261458           NA           NA
+ [71]           NA -0.967651376  0.030509633           NA -1.362620877
+ [76]           NA -1.012803395 -0.369541507  0.007563905  0.304286476
+ [81]           NA  1.571253663  0.769511690  0.853541079           NA
+ [86]  1.379633831 -0.198037599 -0.409432971  0.183006813           NA
+ [91]           NA           NA  0.410874637 -0.199519324  0.293833829
+ [96]  1.099001084 -1.214630008           NA           NA           NA
+
+| You nailed it! Good job!
+
+
+  |                                                                            
+  |==================================================================    |  95%
+| Now that we've got NAs down pat, let's look at a second type of missing value
+| -- NaN, which stands for 'not a number'. To generate NaN, try dividing (using
+| a forward slash) 0 by 0 now.
+
+0/0
+[1] NaN
+
+| You are amazing!
+
+
+  |                                                                            
+  |======================================================================| 100%
+| Let's do one more, just for fun. In R, Inf stands for infinity. What happens
+| if you subtract Inf from Inf?
+
+> Inf-Inf
+Inf-Inf
+[1] NaN
+
+| You are amazing!
+
+| Are you currently enrolled in the Coursera course associated with this
+| lesson?
+
+1: Yes
+2: No
+
+Selection: 1
+1
+
+| Would you like me to notify Coursera that you've completed this lesson? If
+| so, I'll need to get some more info from you.
+
+1: Yes
+2: No
+3: Maybe later
+
+Selection: 1
+1
+
+| Is the following information correct?
+
+Course ID:
+Submission login (email):
+Submission password:
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+1
+
+| I'll try to tell Coursera you've completed this lesson now.
+
+| Great work!
+
+| I've notified Coursera that you have completed rprog-003, Missing_Values.
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 0
+0
+
+| Leaving swirl now. Type swirl() to resume.

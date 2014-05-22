@@ -1,0 +1,645 @@
+> install.packages("swirl")
+install.packages("swirl")
+Installing package into '/Users/pacha/Library/R/3.0/library'
+(as 'lib' is unspecified)
+also installing the dependency 'testthat'
+
+probando la URL 'http://dirichlet.mat.puc.cl/bin/macosx/contrib/3.0/testthat_0.8.1.tgz'
+Content type 'application/x-gzip' length 220820 bytes (215 Kb)
+URL abierta
+==================================================
+downloaded 215 Kb
+
+probando la URL 'http://dirichlet.mat.puc.cl/bin/macosx/contrib/3.0/swirl_2.2.5.tgz'
+Content type 'application/x-gzip' length 89112 bytes (87 Kb)
+URL abierta
+==================================================
+downloaded 87 Kb
+
+
+The downloaded binary packages are in
+	/var/folders/6z/6zbHTFp9FB0aHNlyqc4x9U+++TI/-Tmp-//RtmplAdMmU/downloaded_packages
+> library(swirl)
+library(swirl)
+
+| Hi! I see that you have some variables saved in your workspace. To keep
+| things running smoothly, I recommend you clean up before starting swirl.
+
+| Type ls() to see a list of the variables in your workspace. Then, type
+| rm(list=ls()) to clear your workspace.
+
+| Type swirl() when you are ready to begin.
+
+> swirl()
+swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same
+| name as you did then. If you are new, call yourself something unique.
+
+What shall I call you? pacha
+pacha
+
+| Thanks, pacha. Let's cover a couple of quick housekeeping items before we
+| begin our first lesson. First off, you should know that when you see '...',
+| that means you should press Enter when you are done reading and ready to
+| continue.
+
+...  <-- That's your cue to press Enter to continue
+
+
+| Also, when you see 'ANSWER:', the R prompt (>), or when you are asked to
+| select from a list, that means it's your turn to enter a response, then press
+| Enter to continue.
+
+Select 1, 2, or 3 and press Enter 
+
+1: Continue.
+2: Proceed.
+3: Let's get going!
+
+Selection: 1
+1
+
+| You can exit swirl and return to the R prompt (>) at any time by pressing the
+| Esc key. If you are already at the prompt, type bye() to exit and save your
+| progress. When you exit properly, you'll see a short message letting know
+| you've done so.
+
+| When you are at the R prompt (>):
+| -- Typing skip() allows you to skip the current question.
+| -- Typing play() lets you experiment with R on your own; swirl will ignore
+| what you do...
+| -- UNTIL you type nxt() which will regain swirl's attention.
+| -- Typing bye() causes swirl to exit. Your progress will be saved.
+| -- Typing main() returns you to swirl's main menu.
+| -- Typing info() displays these options again.
+
+| Let's get started!
+
+...
+
+
+| To begin, you must install a course. I can install a course for you from the
+| internet, or I can send you to a web page
+| (https://github.com/swirldev/swirl_courses) which will provide course options
+| and directions for installing courses yourself. (If you are not connected to
+| the internet, type 0 to exit.)
+
+1: R Programming: The basics of programming in R
+2: Don't install anything for me. I'll do it myself.
+
+Selection: 1
+1
+
+| Course installed successfully!
+
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 1
+1
+
+| Please choose a lesson, or type 0 to return to course menu.
+
+1: Basic Building Blocks
+2: Sequences of Numbers
+3: Vectors
+4: Missing Values
+5: Subsetting Vectors
+6: Matrices and Data Frames
+
+Selection: 1
+1
+
+
+  |                                                                            
+  |                                                                      |   0%
+
+| In this lesson, we will explore some basic building blocks of the R
+| programming language.
+
+...
+
+
+
+  |                                                                            
+  |==                                                                    |   3%
+| If at any point you'd like more information on a particular topic related to
+| R, you can type help.start() at the prompt, which will open a menu of
+| resources (either within RStudio or your default web browser, depending on
+| your setup). Alternatively, a simple web search often yields the answer
+| you're looking for.
+
+...
+
+
+
+  |                                                                            
+  |====                                                                  |   6%
+| In it's simplest form, R can be used as an interactive calculator. Type 5 + 7
+| and press Enter.
+
+> 5 + 7
+5 + 7
+[1] 12
+
+| Excellent job!
+
+
+  |                                                                            
+  |=======                                                               |   9%
+| R simply prints the result of 12 by default. However, R is a programming
+| language and often the reason we use a programming language as opposed to a
+| calculator is to automate some process or avoid unnecessary repetition.
+
+...
+
+
+
+  |                                                                            
+  |=========                                                             |  12%
+| In this case, we may want to use our result from above in a second
+| calculation. Instead of retyping 5 + 7 every time we need it, we can just
+| create a new variable that stores the result.
+
+...
+
+
+
+  |                                                                            
+  |===========                                                           |  16%
+| The way you assign a value to a variable in R is by using the assignment
+| operator, which is just a 'less than' symbol followed by a 'minus' sign. It
+| looks like this: <-
+
+...
+
+
+
+  |                                                                            
+  |=============                                                         |  19%
+| Think of the assignment operator as an arrow. You are assigning the value on
+| the right side of the arrow to the variable name on the left side of the
+| arrow.
+
+...
+
+
+
+  |                                                                            
+  |===============                                                       |  22%
+| To assign the result of 5 + 7 to a new variable called x, you type x <- 5 +
+| 7. This can be read as 'x gets 5 plus 7'. Give it a try now.
+
+> x <- 5 + 7
+x <- 5 + 7
+
+| You nailed it! Good job!
+
+
+  |                                                                            
+  |==================                                                    |  25%
+| You'll notice that R did not print the result of 12 this time. When you use
+| the assignment operator, R assumes that you don't want to see the result
+| immediately, but rather that you intend to use the result for something else
+| later on.
+
+...
+
+
+
+  |                                                                            
+  |====================                                                  |  28%
+| To view the contents of the variable x, just type x and press Enter. Try it
+| now.
+
+> x
+x
+[1] 12
+
+| You're the best!
+
+
+  |                                                                            
+  |======================                                                |  31%
+| Now, store the result of x - 3 in a new variable called y.
+
+> y <- x - 3
+y <- x - 3
+
+| You got it!
+
+
+  |                                                                            
+  |========================                                              |  34%
+| What is the value of y? Type y to find out.
+
+> y
+y
+[1] 9
+
+| Excellent job!
+
+
+  |                                                                            
+  |==========================                                            |  38%
+| Now, let's create a small collection of numbers called a vector. Any object
+| that contains data is called a data structure and numeric vectors are the
+| simplest type of data structure in R. In fact, even a single number is
+| considered a vector of length one.
+
+...
+
+
+
+  |                                                                            
+  |============================                                          |  41%
+| The easiest way to create a vector is with the c() function, which stands for
+| 'concatenate' or 'combine'. To create a vector containing the numbers 1.1, 9,
+| and 3.14, type c(1.1, 9, 3.14). Try it now and store the result in a variable
+| called z.
+
+> z <- c(1.1, 9 , 3.14)
+z <- c(1.1, 9 , 3.14)
+
+| Keep up the great work!
+
+
+  |                                                                            
+  |===============================                                       |  44%
+| Anytime you have questions about a particular function, you can access R's
+| built-in help files via the `?` command. For example, if you want more
+| information on the c() function, type ?c without the parentheses that
+| normally follow a function name. Give it a try.
+
+> ?c
+?c
+c                     package:base                     R Documentation
+
+Combine Values into a Vector or List
+
+Description:
+
+     This is a generic function which combines its arguments.
+
+     The default method combines its arguments to form a vector.  All
+     arguments are coerced to a common type which is the type of the
+     returned value, and all attributes except names are removed.
+
+Usage:
+
+     c(..., recursive = FALSE)
+     
+Arguments:
+
+     ...: objects to be concatenated.
+
+recursive: logical.  If 'recursive = TRUE', the function recursively
+          descends through lists (and pairlists) combining all their
+          elements into a vector.
+
+Details:
+
+     The output type is determined from the highest type of the
+     components in the hierarchy NULL < raw < logical < integer <
+     double < complex < character < list < expression.  Pairlists are
+     treated as lists, but non-vector components (such names and calls)
+     are treated as one-element lists which cannot be unlisted even if
+     'recursive = TRUE'.
+
+     'c' is sometimes used for its side effect of removing attributes
+     except names, for example to turn an array into a vector.
+     'as.vector' is a more intuitive way to do this, but also drops
+     names.  Note too that methods other than the default are not
+     required to do this (and they will almost certainly preserve a
+     class attribute).
+
+     This is a primitive function.
+
+Value:
+
+     'NULL' or an expression or a vector of an appropriate mode.  (With
+     no arguments the value is 'NULL'.)
+
+S4 methods:
+
+     This function is S4 generic, but with argument list '(x, ...,
+     recursive = FALSE)'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'unlist' and 'as.vector' to produce attribute-free vectors.
+
+Examples:
+
+     c(1,7:9)
+     c(1:5, 10.5, "next")
+     
+     ## uses with a single argument to drop attributes
+     x <- 1:4
+     names(x) <- letters[1:4]
+     x
+     c(x)          # has names
+     as.vector(x)  # no names
+     dim(x) <- c(2,2)
+     x
+     c(x)
+     as.vector(x)
+     
+     ## append to a list:
+     ll <- list(A = 1, c = "C")
+     ## do *not* use
+     c(ll, d = 1:3) # which is == c(ll, as.list(c(d = 1:3))
+     ## but rather
+     c(ll, d = list(1:3))  # c() combining two lists
+     
+     c(list(A = c(B = 1)), recursive = TRUE)
+     
+     c(options(), recursive = TRUE)
+     c(list(A = c(B = 1, C = 2), B = c(E = 7)), recursive = TRUE)
+     
+
+
+| You are doing so well!
+
+
+  |                                                                            
+  |=================================                                     |  47%
+| Type z to view it's contents. Notice that there are no commas separating the
+| values in the output.
+
+> z
+z
+[1] 1.10 9.00 3.14
+
+| You got it right!
+
+
+  |                                                                            
+  |===================================                                   |  50%
+| You can combine vectors to make a new vector. Create a new vector that
+| contains z, 555, then z again in that order. Don't assign this vector to a
+| new variable, so that we can just see the result immediately.
+
+> c(z, 555, z)
+c(z, 555, z)
+[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14
+
+| That's a job well done!
+
+
+  |                                                                            
+  |=====================================                                 |  53%
+| Numeric vectors can be used in arithmetic expressions. Type the following to
+| see what happens: z * 2 + 100.
+
+> z*2+100
+z*2+100
+[1] 102.20 118.00 106.28
+
+| You are quite good my friend!
+
+
+  |                                                                            
+  |=======================================                               |  56%
+| First, R multiplied each of the three elements in z by 2. Then it added 100
+| to each element to get the result you see above.
+
+...
+
+
+
+  |                                                                            
+  |==========================================                            |  59%
+| Other common arithmetic operators are `+`, `-`, `/`, and `^` (where x^2 means
+| 'x squared'). To take the square root, use the sqrt() function and to take
+| the absolute value, use the abs() function.
+
+...
+
+
+
+  |                                                                            
+  |============================================                          |  62%
+| Take the square root of z - 1 and assign it to a new variable called mySqrt.
+
+> mySqrt <- sqrt(z-1)
+mySqrt <- sqrt(z-1)
+
+| You nailed it! Good job!
+
+
+  |                                                                            
+  |==============================================                        |  66%
+| Before we view the contents of the mySqrt variable, what do you think it
+| contains?
+
+1: a vector of length 0 (i.e. an empty vector)
+2: a single number (i.e a vector of length 1)
+3: a vector of length 3
+
+Selection: 2
+2
+
+| Keep trying!
+
+| Think about how R handled the other 'vectorized' operations:
+| element-by-element.
+
+1: a vector of length 3
+2: a vector of length 0 (i.e. an empty vector)
+3: a single number (i.e a vector of length 1)
+
+Selection: 1
+1
+
+| You nailed it! Good job!
+
+
+  |                                                                            
+  |================================================                      |  69%
+| Print the contents of mySqrt.
+
+> mySqrt
+mySqrt
+[1] 0.3162278 2.8284271 1.4628739
+
+| Excellent job!
+
+
+  |                                                                            
+  |==================================================                    |  72%
+| As you may have guessed, R first subtracted 1 from each element of z, then
+| took the square root of each element. This leaves you with a vector of the
+| same length as the original vector z.
+
+...
+
+
+
+  |                                                                            
+  |====================================================                  |  75%
+| Now, create a new variable called myDiv that gets the value of z divided by
+| mySqrt.
+
+> myDiv <- z/mySqrt
+myDiv <- z/mySqrt
+
+| You got it right!
+
+
+  |                                                                            
+  |=======================================================               |  78%
+| Which statement do you think is true?
+
+1: myDiv is undefined
+2: myDiv is a single number (i.e a vector of length 1)
+3: The first element of myDiv is equal to the first element of z divided by the first element of mySqrt, and so on...
+
+Selection: 3
+3
+
+| That's a job well done!
+
+
+  |                                                                            
+  |=========================================================             |  81%
+| Go ahead and print the contents of myDiv.
+
+> myDiv
+myDiv
+[1] 3.478505 3.181981 2.146460
+
+| You're the best!
+
+
+  |                                                                            
+  |===========================================================           |  84%
+| When given two vectors of the same length, R simply performs the specified
+| arithmetic operation (`+`, `-`, `*`, etc.) element-by-element. If the vectors
+| are of different lengths, R 'recycles' the shorter vector until it is the
+| same length as the longer vector.
+
+...
+
+
+
+  |                                                                            
+  |=============================================================         |  88%
+| When we did z * 2 + 100 in our earlier example, z was a vector of length 3,
+| but technically 2 and 100 are each vectors of length 1.
+
+...
+
+
+
+  |                                                                            
+  |===============================================================       |  91%
+| Behind the scenes, R is 'recycling' the 2 to make a vector of 2s and the 100
+| to make a vector of 100s. In other words, when you ask R to compute z * 2 +
+| 100, what it really computes is this: z * c(2, 2, 2) + c(100, 100, 100).
+
+...
+
+
+
+  |                                                                            
+  |==================================================================    |  94%
+| To see another example of how this vector 'recycling' works, try adding c(1,
+| 2, 3, 4) and c(0, 10). Don't worry about saving the result in a new variable.
+
+> c(1,2,3,4)+c(0,10)
+c(1,2,3,4)+c(0,10)
+[1]  1 12  3 14
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |====================================================================  |  97%
+| If the length of the shorter vector does not divide evenly into the length of
+| the longer vector, R will still apply the 'recycling' method, but will throw
+| a warning to let you know something fishy might be going on.
+
+...
+
+
+
+  |                                                                            
+  |======================================================================| 100%
+| Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.
+
+> c(1,2,3,4)+c(0,10,100)
+c(1,2,3,4)+c(0,10,100)
+[1]   1  12 103   4
+Mensajes de aviso perdidos
+In c(1, 2, 3, 4) + c(0, 10, 100) :
+  longitud de objeto mayor no es m'ultiplo de la longitud de uno menor
+
+| Keep up the great work!
+
+| Are you currently enrolled in the Coursera course associated with this
+| lesson?
+
+1: Yes
+2: No
+
+Selection: 1
+1
+
+| Would you like me to notify Coursera that you've completed this lesson? If
+| so, I'll need to get some more info from you.
+
+1: Yes
+2: No
+3: Maybe later
+
+Selection: 1
+1
+
+| The first item I need is your Course ID. For example, if the homepage for
+| your Coursera course was 'https://class.coursera.org/rprog-001', then your
+| course ID would be 'rprog-001' (without the quotes).
+
+Course ID:
+Submission login (email):
+Submission password:
+
+| Is the following information correct?
+
+Course ID:
+Submission login (email):
+Submission password:
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+1
+
+| I'll try to tell Coursera you've completed this lesson now.
+
+| Great work!
+
+| I've notified Coursera that you have completed rprog-003,
+| Basic_Building_Blocks.
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 0
+0
+
+| Leaving swirl now. Type swirl() to resume.

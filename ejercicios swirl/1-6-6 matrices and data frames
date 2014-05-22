@@ -1,0 +1,639 @@
+> library(swirl)
+library(swirl)
+
+| Hi! Type swirl() when you are ready to begin.
+
+> swirl()
+swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same
+| name as you did then. If you are new, call yourself something unique.
+
+What shall I call you? pacha
+pacha
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 1
+1
+
+| Please choose a lesson, or type 0 to return to course menu.
+
+1: Basic Building Blocks
+2: Sequences of Numbers
+3: Vectors
+4: Missing Values
+5: Subsetting Vectors
+6: Matrices and Data Frames
+
+Selection: 6
+6
+
+
+  |                                                                            
+  |                                                                      |   0%
+
+| In this lesson, we'll cover matrices and data frames. Both represent
+| 'rectangular' data types, meaning that they are used to store tabular data,
+| with rows and columns.
+
+...
+
+
+
+  |                                                                            
+  |==                                                                    |   3%
+| The main difference, as you'll see, is that matrices can only contain a
+| single class of data, while data frames can consist of many different classes
+| of data.
+
+...
+
+
+
+  |                                                                            
+  |====                                                                  |   6%
+| Let's create a vector containing the numbers 1 through 20 using the `:`
+| operator. Store the result in a variable called myVector.
+
+> myVector <- 1:20
+myVector <- 1:20
+
+| Excellent job!
+
+
+  |                                                                            
+  |======                                                                |   9%
+| View the contents of the vector you just created.
+
+> myVector
+myVector
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| You're the best!
+
+
+  |                                                                            
+  |========                                                              |  11%
+| The dim() function tells us the 'dimensions' of an object. What happens if we
+| do dim(myVector)? Give it try.
+
+> dim(myVector)
+dim(myVector)
+NULL
+
+| You are doing so well!
+
+
+  |                                                                            
+  |==========                                                            |  14%
+| Clearly, that's not very helpful! Since myVector is a vector, it doesn't have
+| a `dim` attribute (so it's just NULL), but we can find its length using the
+| length() function. Try that now.
+
+> length(myVector)
+length(myVector)
+[1] 20
+
+| That's a job well done!
+
+
+  |                                                                            
+  |============                                                          |  17%
+| Ah! That's what we wanted. But, what happens if we give myVector a `dim`
+| attribute? Let's give it a try. Type dim(myVector) <- c(4, 5).
+
+> dim(myVector) <- c(4,5)
+dim(myVector) <- c(4,5)
+
+| Nice work!
+
+
+  |                                                                            
+  |==============                                                        |  20%
+| It's okay if that last command seemed a little strange to you. It should! The
+| dim() function allows you to get OR set the `dim` attribute for an R object.
+| In this case, we assigned the value c(4, 5) to the `dim` attribute of
+| myVector.
+
+...
+
+
+
+  |                                                                            
+  |================                                                      |  23%
+| Use dim(myVector) to confirm that we've set the `dim` attribute correctly.
+
+> dim(myVector)
+dim(myVector)
+[1] 4 5
+
+| You got it right!
+
+
+  |                                                                            
+  |==================                                                    |  26%
+| Another way to see this is by calling the attributes() function on myVector.
+| Try it now.
+
+> attributes(myVector)
+attributes(myVector)
+$dim
+[1] 4 5
+
+
+| You got it right!
+
+
+  |                                                                            
+  |====================                                                  |  29%
+| Just like in math class, when dealing with a 2-dimensional object (think
+| rectangular table), the first number is the number of rows and the second is
+| the number of columns. Therefore, we just gave myVector 4 rows and 5 columns.
+
+...
+
+
+
+  |                                                                            
+  |======================                                                |  31%
+| But, wait! That doesn't sound like a vector any more. Well, it's not. Now
+| it's a matrix. View the contents of myVector now to see what it looks like.
+
+> myVector
+myVector
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    5    9   13   17
+[2,]    2    6   10   14   18
+[3,]    3    7   11   15   19
+[4,]    4    8   12   16   20
+
+| You are doing so well!
+
+
+  |                                                                            
+  |========================                                              |  34%
+| Now, let's confirm it's actually a matrix by using the class() function. Type
+| class(myVector) to see what I mean.
+
+> class(myVector)
+class(myVector)
+[1] "matrix"
+
+| You got it right!
+
+
+  |                                                                            
+  |==========================                                            |  37%
+| Sure enough, myVector is now a matrix. We should store it in a new variable
+| that helps us remember what it is. Store the value of myVector in a new
+| variable called myMatrix.
+
+> myMatrix <- myVector
+myMatrix <- myVector
+
+| You're the best!
+
+
+  |                                                                            
+  |============================                                          |  40%
+| The example that we've used so far was meant to illustrate the point that a
+| matrix is simply an atomic vector with a dimension attribute. A more direct
+| method of creating the same matrix uses the matrix() function.
+
+...
+
+
+
+  |                                                                            
+  |==============================                                        |  43%
+| Bring up the help file for the matrix() function now using the `?` function.
+
+> ?matrix
+?matrix
+matrix                  package:base                   R Documentation
+
+Matrices
+
+Description:
+
+     'matrix' creates a matrix from the given set of values.
+
+     'as.matrix' attempts to turn its argument into a matrix.
+
+     'is.matrix' tests if its argument is a (strict) matrix.
+
+Usage:
+
+     matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,
+            dimnames = NULL)
+     
+     as.matrix(x, ...)
+     ## S3 method for class 'data.frame'
+     as.matrix(x, rownames.force = NA, ...)
+     
+     is.matrix(x)
+     
+Arguments:
+
+    data: an optional data vector (including a list or 'expression'
+          vector).  Non-atomic classed R objects are coerced by
+          'as.vector' and all attributes discarded.
+
+    nrow: the desired number of rows.
+
+    ncol: the desired number of columns.
+
+   byrow: logical. If 'FALSE' (the default) the matrix is filled by
+          columns, otherwise the matrix is filled by rows.
+
+dimnames: A 'dimnames' attribute for the matrix: 'NULL' or a 'list' of
+          length 2 giving the row and column names respectively.  An
+          empty list is treated as 'NULL', and a list of length one as
+          row names.  The list can be named, and the list names will be
+          used as names for the dimensions.
+
+       x: an R object.
+
+     ...: additional arguments to be passed to or from methods.
+
+rownames.force: logical indicating if the resulting matrix should have
+          character (rather than 'NULL') 'rownames'.  The default,
+          'NA', uses 'NULL' rownames if the data frame has 'automatic'
+          row.names or for a zero-row data frame.
+
+Details:
+
+     If one of 'nrow' or 'ncol' is not given, an attempt is made to
+     infer it from the length of 'data' and the other parameter.  If
+     neither is given, a one-column matrix is returned.
+
+     If there are too few elements in 'data' to fill the matrix, then
+     the elements in 'data' are recycled.  If 'data' has length zero,
+     'NA' of an appropriate type is used for atomic vectors ('0' for
+     raw vectors) and 'NULL' for lists.
+
+     'is.matrix' returns 'TRUE' if 'x' is a vector and has a '"dim"'
+     attribute of length 2) and 'FALSE' otherwise.  Note that a
+     'data.frame' is *not* a matrix by this test.  The function is
+     generic: you can write methods to handle specific classes of
+     objects, see InternalMethods.
+
+     'as.matrix' is a generic function.  The method for data frames
+     will return a character matrix if there is only atomic columns and
+     any non-(numeric/logical/complex) column, applying 'as.vector' to
+     factors and 'format' to other non-character columns.  Otherwise,
+     the usual coercion hierarchy (logical < integer < double <
+     complex) will be used, e.g., all-logical data frames will be
+     coerced to a logical matrix, mixed logical-integer will give a
+     integer matrix, etc.
+
+     The default method for 'as.matrix' calls 'as.vector(x)', and hence
+     e.g. coerces factors to character vectors.
+
+     When coercing a vector, it produces a one-column matrix, and
+     promotes the names (if any) of the vector to the rownames of the
+     matrix.
+
+     'is.matrix' is a primitive function.
+
+     The 'print' method for a matrix gives a rectangular layout with
+     dimnames or indices.  For a list matrix, the entries of length not
+     one are printed in the form 'integer,7' indicating the type and
+     length.
+
+Note:
+
+     If you just want to convert a vector to a matrix, something like
+     
+       dim(x) <- c(nx, ny)
+       dimnames(x) <- list(row_names, col_names)
+
+     will avoid duplicating 'x'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'data.matrix', which attempts to convert to a numeric matrix.
+
+     A matrix is the special case of a two-dimensional 'array'.
+
+Examples:
+
+     is.matrix(as.matrix(1:10))
+     !is.matrix(warpbreaks)  # data.frame, NOT matrix!
+     warpbreaks[1:10,]
+     as.matrix(warpbreaks[1:10,])  # using as.matrix.data.frame(.) method
+     
+     ## Example of setting row and column names
+     mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
+                    dimnames = list(c("row1", "row2"),
+                                    c("C.1", "C.2", "C.3")))
+     mdat
+     
+
+
+| Great job!
+
+
+  |                                                                            
+  |================================                                      |  46%
+| Now, look at the documentation for the matrix function and see if you can
+| figure out how to create a matrix containing the same numbers (1-20) and
+| dimensions (4 rows, 5 columns) by calling the matrix() function. Store the
+| result in a variable called myMatrix2.
+
+> myMatrix2 <- matrix(1:20,nrow=4,ncol=5)
+myMatrix2 <- matrix(1:20,nrow=4,ncol=5)
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |==================================                                    |  49%
+| Finally, let's confirm that myMatrix and myMatrix2 are actually identical.
+| The identical() function will tell us if its first two arguments are the
+| same. Try it out.
+
+> identical(myMatrix,myMatrix2)
+identical(myMatrix,myMatrix2)
+[1] TRUE
+
+| Nice work!
+
+
+  |                                                                            
+  |====================================                                  |  51%
+| Now, imagine that the numbers in our table represent some measurements from a
+| clinical experiment, where each row represents one patient and each column
+| represents one variable for which measurements where taken.
+
+...
+
+
+
+  |                                                                            
+  |======================================                                |  54%
+| We may want to label the rows, so that we know which numbers belong to each
+| patient in the experiment. One way to do this is to add a column to the
+| matrix, which contains the names of all four people.
+
+...
+
+
+
+  |                                                                            
+  |========================================                              |  57%
+| Let's start by creating a character vector containing the names of our
+| patients -- Bill, Gina, Kelly, and Sean. Remember that double quotes tell R
+| that something is a character string. Store the result in a variable called
+| patients.
+
+> patients <- c("Bill","Gina","Kelly","Sean")
+patients <- c("Bill","Gina","Kelly","Sean")
+
+| You're the best!
+
+
+  |                                                                            
+  |==========================================                            |  60%
+| Now we'll use the cbind() function to 'combine columns'. Don't worry about
+| storing the result in a new variable. Just call cbind() with two arguments --
+| the patients vector and myMatrix.
+
+> cbind(patients,myMatrix)
+cbind(patients,myMatrix)
+     patients                       
+[1,] "Bill"   "1" "5" "9"  "13" "17"
+[2,] "Gina"   "2" "6" "10" "14" "18"
+[3,] "Kelly"  "3" "7" "11" "15" "19"
+[4,] "Sean"   "4" "8" "12" "16" "20"
+
+| Keep up the great work!
+
+
+  |                                                                            
+  |============================================                          |  63%
+| Something is fishy about our result! It appears that combining the character
+| vector with our matrix of numbers caused everything to be enclosed in double
+| quotes. This means we're left with a matrix of character strings, which is no
+| good.
+
+...
+
+
+
+  |                                                                            
+  |==============================================                        |  66%
+| If you remember back to the beginning of this lesson, I told you that
+| matrices can only contain ONE class of data. Therefore, when we tried to
+| combine a character vector with a numeric matrix, R was forced to 'coerce'
+| the numbers to characters, hence the double quotes.
+
+...
+
+
+
+  |                                                                            
+  |================================================                      |  69%
+| This is called 'implicit coersion', because we didn't ask for it. It just
+| happened. But why didn't R just convert the names of our patients to numbers?
+| I'll let you ponder that question on your own.
+
+...
+
+
+
+  |                                                                            
+  |==================================================                    |  71%
+| So, we're still left with the question of how to include the names of our
+| patients in the table without destroying the integrity of our numeric data.
+| Try the following -- myData <- data.frame(patients, myMatrix)
+
+> myData <- data.frame(patients,myMatrix)
+myData <- data.frame(patients,myMatrix)
+
+| You got it!
+
+
+  |                                                                            
+  |====================================================                  |  74%
+| Now view the contents of myData to see what we've come up with.
+
+> myData
+myData
+  patients X1 X2 X3 X4 X5
+1     Bill  1  5  9 13 17
+2     Gina  2  6 10 14 18
+3    Kelly  3  7 11 15 19
+4     Sean  4  8 12 16 20
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |======================================================                |  77%
+| It looks like the data.frame() function allowed us to store our character
+| vector of names right alongside our matrix of numbers. That's exactly what we
+| were hoping for!
+
+...
+
+
+
+  |                                                                            
+  |========================================================              |  80%
+| Behind the scenes, the data.frame() function takes any number of arguments
+| and returns a single object of class `data.frame` that is composed of the
+| original objects.
+
+...
+
+
+
+  |                                                                            
+  |==========================================================            |  83%
+| Let's confirm this by calling the class() function on our newly created data
+| frame.
+
+> class(myData)
+class(myData)
+[1] "data.frame"
+
+| That's correct!
+
+
+  |                                                                            
+  |============================================================          |  86%
+| It's also possible to assign names to the individual rows and columns of a
+| data frame, which presents another possible way of determining which row of
+| values in our table belongs to each patient.
+
+...
+
+
+
+  |                                                                            
+  |==============================================================        |  89%
+| However, since we've already solved that problem, let's solve a different
+| problem by assigning names to the columns of our data frame so that we know
+| what type of measurement each column represents.
+
+...
+
+
+
+  |                                                                            
+  |================================================================      |  91%
+| Since we have six columns (including patient names), we'll need to first
+| create a vector containing one element for each column. Create a character
+| vector called cnames that contains the following values (in order) --
+| "patient", "age", "weight", "bp", "rating", "test".
+
+> cnames <- c("patient","weight","bp","rating","test")
+cnames <- c("patient","weight","bp","rating","test")
+
+| Not exactly. Give it another go. Or, type info() for more options.
+
+| Make sure all of the names are lowercase, surrounded by double quotes, and
+| separated with commas. Don't forget to use the c() function.
+
+> cnames <- c("patient","age","weight","bp","rating","test")
+cnames <- c("patient","age","weight","bp","rating","test")
+
+| You are really on a roll!
+
+
+  |                                                                            
+  |==================================================================    |  94%
+| Now, use the colnames() function to set the `colnames` attribute for our data
+| frame. This is similar to the way we used the dim() function earlier in this
+| lesson.
+
+> colnames(myData) <- cnames
+colnames(myData) <- cnames
+
+| That's correct!
+
+
+  |                                                                            
+  |====================================================================  |  97%
+| Let's see if that got the job done. Print the contents of myData.
+
+> myData
+myData
+  patient age weight bp rating test
+1    Bill   1      5  9     13   17
+2    Gina   2      6 10     14   18
+3   Kelly   3      7 11     15   19
+4    Sean   4      8 12     16   20
+
+| You are doing so well!
+
+
+  |                                                                            
+  |======================================================================| 100%
+| In this lesson, you learned the basics of working with two very important and
+| common data structures -- matrices and data frames. There's much more to
+| learn and we'll be covering more advanced topics, particularly with respect
+| to data frames, in future lessons.
+
+...
+
+
+| Are you currently enrolled in the Coursera course associated with this
+| lesson?
+
+1: Yes
+2: No
+
+Selection: 1
+1
+
+| Would you like me to notify Coursera that you've completed this lesson? If
+| so, I'll need to get some more info from you.
+
+1: Yes
+2: No
+3: Maybe later
+
+Selection: 1
+1
+
+| Is the following information correct?
+
+Course ID:
+Submission login (email):
+Submission password:
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+1
+
+| I'll try to tell Coursera you've completed this lesson now.
+
+| Great work!
+
+| I've notified Coursera that you have completed rprog-003,
+| Matrices_and_Data_Frames.
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 0
+0
+
+| Leaving swirl now. Type swirl() to resume.
